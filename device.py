@@ -1,7 +1,7 @@
 سلام استاد روز بخیر ان کد هاست بخش اول برای سوال اول و در ادامه به سوال دوم و سوم پرداختم 
 در بخشی که باید سوال سوم رو انجام میدادم سعی کرد متن های درست انگلیسی رو برای پرینت بگذارم ولی خب انگلیسیم ضعیفه و شرمنده ام اگر جایی رو اشتباه نوشتم 
-ممنون که دارید چک میکنید و وقت میگذارید اگر هم جایی اشکال داشت ممنون میشم بگید درستش کنم 
-
+ ممنون که دارید چک میکنید و وقت میگذارید اگر هم جایی اشکال داشت ممنون میشم بگید درستش کنم 
+استاد بخش آخر هنوز کامل نشده براتون آماده شد بخش آخر اضافه میکنم
 
 
 
@@ -337,3 +337,15 @@ class ControlPanel:
             print(f" No devices of type '{device_type}' found in any group.")
         else:
             print(" Status check completed.")
+
+def create_sensor(self, group_name, sensor_type, sensor_name):
+        '''
+        yeki sensor besaze va ezafe kone be group
+        '''
+        if group_name in self.groups:
+            location = 'home'
+            new_sensor = Sensor(location, group_name, sensor_type, sensor_name)
+            self.groups[group_name].append(new_sensor)
+            print(f" Sensor '{sensor_name}' created in '{group_name}' :white_check_mark:")
+        else:
+            print(f":warning: Group '{group_name}' not found!")
