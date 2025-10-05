@@ -1,6 +1,7 @@
 سلام استاد روز بخیر ان کد هاست بخش اول برای سوال اول و در ادامه به سوال دوم و سوم پرداختم 
 در بخشی که باید سوال سوم رو انجام میدادم سعی کرد متن های درست انگلیسی رو برای پرینت بگذارم ولی خب انگلیسیم ضعیفه و شرمنده ام اگر جایی رو اشتباه نوشتم 
-ممنون که دارید چک میکنید و وقت میگذارید 
+ممنون که دارید چک میکنید و وقت میگذارید اگر هم جایی اشکال داشت ممنون میشم بگید درستش کنم 
+
 
 
 
@@ -26,8 +27,7 @@ class Device:
         # اطلاعات اتصال 
         self.mqtt_broker='jasdhash'
         self.port=37362  
-        
-        # Pin یا آدرس MQTT
+         
         self.mqtt_client=pin
         
         # self.connect_mqtt() 
@@ -56,9 +56,9 @@ class Device:
     def turn_off(self):
         self.status='off'
         mqtt.publish(self.mqtt_client,self.device_name,'TURN OFF')
-# --------------------------
+
     # روشن کردن همه دستگاه‌های یک گروه
-    # --------------------------
+   
     def turn_on_in_group(self, group_name):
         if group_name in self.groups:
             print(f" روشن کردن همه دستگاه‌های گروه '{group_name}' ...")
@@ -68,9 +68,9 @@ class Device:
         else:
             print(f" گروه '{group_name}' یافت نشد!")
 
-    # --------------------------
+  
     # خاموش کردن همه دستگاه‌های یک گروه
-    # --------------------------
+   
     def turn_off_in_group(self, group_name):
         if group_name in self.groups:
             print(f" خاموش کردن همه دستگاه‌های گروه '{group_name}' ...")
@@ -80,19 +80,16 @@ class Device:
         else:
             print(f" گروه '{group_name}' یافت نشد!")
 
-    # --------------------------
     # روشن کردن تمام دستگاه‌ها در همه گروه‌ها
-    # --------------------------
+ 
     def turn_on_all(self):
         print(" روشن کردن تمام دستگاه‌های خانه ...")
         for group_name, devices in self.groups.items():
             for device in devices:
                 device.turn_on()
         print(" همه دستگاه‌های خانه روشن شدند!")
-
-    # --------------------------
     # خاموش کردن تمام دستگاه‌ها در همه گروه‌ها
-    # --------------------------
+
     def turn_off_all(self):
         print(" خاموش کردن تمام دستگاه‌های خانه ...")
         for group_name, devices in self.groups.items():
@@ -100,9 +97,8 @@ class Device:
                 device.turn_off()
         print(" همه دستگاه‌های خانه خاموش شدند!")
 
-    # --------------------------
-    # وضعیت دستگاه‌های داخل یک گروه
-    # --------------------------
+
+ 
     def get_status_in_group(self, group_name):
         if group_name in self.groups:
             print(f" وضعیت دستگاه‌های گروه '{group_name}':")
@@ -111,10 +107,7 @@ class Device:
                 print(f"  • {device.device_name} --> {status}")
         else:
             print(f" گروه '{group_name}' وجود ندارد!")
-
-    # --------------------------
-    # وضعیت دستگاه‌ها بر اساس نوع (مثلاً فقط لامپ‌ها)
-    # --------------------------
+   
     def get_status_in_device_type(self, device_type):
         print(f" بررسی وضعیت تمام دستگاه‌های نوع '{device_type}':")
         found = False
@@ -126,41 +119,6 @@ class Device:
                     print(f"  • {device.device_name} ({group_name}) --> {status}")
         if not found:
             print(f" هیچ دستگاهی از نوع '{device_type}' یافت نشد.")
-
-
-# ============================================
-#  Example Usage (نمونه اجرای برنامه)
-# ============================================
-
-if name == "main":
-    print("\n شروع برنامه خانه هوشمند...\n")
-
-    panel = ControlPanel()
-    panel.create_group("living_room")
-    panel.create_group("kitchen")
-
-    panel.create_multiple_device("living_room", "lamp", 3)
-    panel.create_multiple_device("kitchen", "fan", 2)
-
-    panel.turn_on_in_group("living_room")
-    panel.get_status_in_group("living_room")
-
-    panel.turn_on_all()
-    panel.get_status_in_device_type("lamp")
-
-    panel.turn_off_in_group("kitchen")
-    panel.turn_off_all()
-
-    print("\n🏁 پایان اجرای برنامه.\n")
-    def get_status(self):
-        if self.status=='on':
-            return True
-        else:
-            return False
-
-      # ============================================
-#  SMART HOME CONTROL SYSTEM (FINAL VERSION)
-# ============================================
 
 # ---- Device Class ----
 class Device:
@@ -194,18 +152,6 @@ class Sensor:
         self.sensor_name = sensor_name
 
     def read_data(self):
-        # مثال برای سنسور دما
-        if self.sensor_type == "temperature":
-            value = round(random.uniform(20, 30), 2)
-            print(f" دمای ثبت‌شده توسط {self.sensor_name}: {value}°C")
-            return value
-        elif self.sensor_type == "humidity":
-            value = round(random.uniform(30, 70), 1)
-            print(f" میزان رطوبت {self.sensor_name}: {value}%")
-            return value
-        else:
-            print(f" نوع سنسور '{self.sensor_type}' شناسایی نشد.")
-            return None
 
 
 # ---- Control Panel ----
@@ -214,9 +160,7 @@ class ControlPanel:
         self.groups = {}
         print(" سیستم کنترل هوشمند خانه راه‌اندازی شد ")
 
-    # --------------------------
-    # ایجاد گروه جدید
-    # --------------------------
+ 
     def create_group(self, group_name):
         if group_name not in self.groups:
             self.groups[group_name] = []
@@ -224,9 +168,7 @@ class ControlPanel:
         else:
             print(f" گروه '{group_name}' از قبل وجود دارد!")
 
-    # --------------------------
-    # افزودن دستگاه به گروه
-    # --------------------------
+  
     def add_device_to_group(self, group_name, device):
         if group_name in self.groups:
             self.groups[group_name].append(device)
@@ -234,9 +176,7 @@ class ControlPanel:
         else:
             print(f" گروه '{group_name}' پیدا نشد!")
 
-    # --------------------------
-    # سلخت دستگاه جدید
-    # --------------------------
+  
     def create_device(self, group_name, device_type, device_name):
         if group_name in self.groups:
             location = 'home'
@@ -246,9 +186,7 @@ class ControlPanel:
         else:
             print(f" گروه '{group_name}' یافت نشد، ابتدا آن را ایجاد کنید!")
 
-    # --------------------------
-    # ساخت چند دستگاه به صورت خودکار
-    # --------------------------
+  
     def create_multiple_device(self, group_name, device_type, device_number):
         if group_name in self.groups:
             for i in range(1, device_number + 1):
@@ -258,9 +196,7 @@ class ControlPanel:
         else:
             print(f" گروه '{group_name}' وجود ندارد!")
 
-    # --------------------------
-    # دریافت لیست دستگاه‌های یک گروه
-    # --------------------------
+  
     def get_devices(self, group_name):
         if group_name in self.groups:
             return self.groups[group_name]
