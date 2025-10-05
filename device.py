@@ -23,8 +23,6 @@ class Device:
         self.device_name=device_name 
         self.status='off'
         
-        
-        # اطلاعات اتصال 
         self.mqtt_broker='jasdhash'
         self.port=37362  
          
