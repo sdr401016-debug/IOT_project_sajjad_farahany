@@ -21,6 +21,19 @@ camera
 استاد سلام بخش آخر سوال سوم رو ارسال کردم و به آخر این پروژه اضافه کردم ولی یه مشکلی که داره اینه که درست اجرا نمیشه میشه لطفا چک کنید هرچه کردم درست نشد یعنی به نظر کد درسته البته فکر کنم ولی درست اجرا نمیشه
 
 
+
+APM:
+
+سلام فعلا در همین جا با هم جلو میریم و بعدا دوتا فایلش میکنم برات
+ببین مشکل اصلی ای که کدت داشت اینه که آیدنت رو رعایت نمیکنی
+یعنی فاصله هایی که پایتون براش مهمه ، تمام توابع ها باید زیر هم باشه
+یعنی همشون ۴ تا اسپیس فاصله داره از چپ 
+یا شروع هر تابع داخلش باید از اسم تابع ۴ تا اسپیس داشته باشه
+من هم هاینارو اینجا اوکی کردم
+
+مشکل از شما نیست ، در اسپایدر و خیلی ادیتور ها به صورت اتومات این فاصله هارو
+براتون درست میکنه اما ادیتور گیت هاب این قابلیت رو نداره
+
 '''
 
 
@@ -219,7 +232,7 @@ class ControlPanel:
             return [] ;
 
       
-          def create_sensor(self, group_name, sensor_type, sensor_name):
+    def create_sensor(self, group_name, sensor_type, sensor_name):
         '''
         yeki sensor besaze va ezafe kone be group
         '''
@@ -245,7 +258,7 @@ class ControlPanel:
         else:
             print(f" Group '{group_name}' not found!")
 
-      def turn_off_in_group(self, group_name):
+    def turn_off_in_group(self, group_name):
         '''
         biad dakhele oon group_name doone doone ro
         khamoosh kone 
@@ -354,33 +367,33 @@ class ControlPanel:
         else:
             print(" Status check completed.")
 
-def create_sensor(self, group_name, sensor_type, sensor_name):
-        '''
-        yeki sensor besaze va ezafe kone be group
-        '''
-        if group_name in self.groups:
-            location = 'home'
-            new_sensor = Sensor(location, group_name, sensor_type, sensor_name)
-            self.groups[group_name].append(new_sensor)
-            print(f" Sensor '{sensor_name}' created in '{group_name}' ")
-        else:
-            print(f"Group '{group_name}' not found!")
-
-# بخش آخر و افزوده شده 
-
-def create_multiple_sensor(self, group_name, sensor_type, sensor_number):
-        '''
-     chand ta sensor besaz
-        '''
-        if group_name in self.groups:
-          print(f" Creating {sensor_number} sensors in '{group_name}' ...")
-         
-            for i in range(1, sensor_number + 1):
-                sensor_name = f"{sensor_type}_{i}"
-                self.create_sensor(group_name, sensor_type, sensor_name)
-            print(f" {sensor_number} sensors created successfully in '{group_name}'.")
-         
-        else:
-            print(f" Group '{group_name}' not found!")
+    def create_sensor(self, group_name, sensor_type, sensor_name):
+            '''
+            yeki sensor besaze va ezafe kone be group
+            '''
+            if group_name in self.groups:
+                location = 'home'
+                new_sensor = Sensor(location, group_name, sensor_type, sensor_name)
+                self.groups[group_name].append(new_sensor)
+                print(f" Sensor '{sensor_name}' created in '{group_name}' ")
+            else:
+                print(f"Group '{group_name}' not found!")
+    
+    # بخش آخر و افزوده شده 
+    
+    def create_multiple_sensor(self, group_name, sensor_type, sensor_number):
+            '''
+         chand ta sensor besaz
+            '''
+            if group_name in self.groups:
+              print(f" Creating {sensor_number} sensors in '{group_name}' ...")
+             
+                for i in range(1, sensor_number + 1):
+                    sensor_name = f"{sensor_type}_{i}"
+                    self.create_sensor(group_name, sensor_type, sensor_name)
+                print(f" {sensor_number} sensors created successfully in '{group_name}'.")
+             
+            else:
+                print(f" Group '{group_name}' not found!")
 
 
