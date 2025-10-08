@@ -18,6 +18,7 @@ camera
 استاد جسارته میدونم ولی بنده بلد نیستم دوتا فایلش کنم اگر زحمت ننمیشه خودتون انجام من هنوز روی بخش آخر قسمت سوم پروژ] گیر کردم ممنون میشم خودتون این دوفایلی کردن رو انجام بدید و من به اون برسم بازم ببخشید که زحمت میدم
 
 
+استاد سلام بخش آخر سوال سوم رو ارسال کردم و به آخر این پروژه اضافه کردم ولی یه مشکلی که داره اینه که درست اجرا نمیشه میشه لطفا چک کنید هرچه کردم درست نشد یعنی به نظر کد درسته البته فکر کنم ولی درست اجرا نمیشه
 
 
 '''
@@ -364,3 +365,22 @@ def create_sensor(self, group_name, sensor_type, sensor_name):
             print(f" Sensor '{sensor_name}' created in '{group_name}' :white_check_mark:")
         else:
             print(f":warning: Group '{group_name}' not found!")
+
+# بخش آخر و افزوده شده 
+
+def create_multiple_sensor(self, group_name, sensor_type, sensor_number):
+        '''
+     chand ta sensor besaz
+        '''
+        if group_name in self.groups:
+          print(f" Creating {sensor_number} sensors in '{group_name}' ...")
+         
+            for i in range(1, sensor_number + 1):
+                sensor_name = f"{sensor_type}_{i}"
+                self.create_sensor(group_name, sensor_type, sensor_name)
+            print(f":white_check_mark: {sensor_number} sensors created successfully in '{group_name}'.")
+         
+        else:
+            print(f":warning: Group '{group_name}' not found!")
+
+
