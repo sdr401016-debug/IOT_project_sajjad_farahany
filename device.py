@@ -362,9 +362,9 @@ def create_sensor(self, group_name, sensor_type, sensor_name):
             location = 'home'
             new_sensor = Sensor(location, group_name, sensor_type, sensor_name)
             self.groups[group_name].append(new_sensor)
-            print(f" Sensor '{sensor_name}' created in '{group_name}' :white_check_mark:")
+            print(f" Sensor '{sensor_name}' created in '{group_name}' ")
         else:
-            print(f":warning: Group '{group_name}' not found!")
+            print(f"Group '{group_name}' not found!")
 
 # بخش آخر و افزوده شده 
 
@@ -378,9 +378,9 @@ def create_multiple_sensor(self, group_name, sensor_type, sensor_number):
             for i in range(1, sensor_number + 1):
                 sensor_name = f"{sensor_type}_{i}"
                 self.create_sensor(group_name, sensor_type, sensor_name)
-            print(f":white_check_mark: {sensor_number} sensors created successfully in '{group_name}'.")
+            print(f" {sensor_number} sensors created successfully in '{group_name}'.")
          
         else:
-            print(f":warning: Group '{group_name}' not found!")
+            print(f" Group '{group_name}' not found!")
 
 
