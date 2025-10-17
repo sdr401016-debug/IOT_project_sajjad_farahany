@@ -1,7 +1,7 @@
 
 class Device:
     
-    def init(self,location,group,device_type,device_name,pin):
+    def int(self,location,group,device_type,device_name,pin):
         self.location=location
         self.group=group
         self.device_type=device_type
