@@ -1,6 +1,6 @@
 # ---- Device Class ----
 class Device:
-    def init(self, location, group, device_type, device_name):
+    def int(self, location, group, device_type, device_name):
         self.location = location
         self.group = group
         self.device_type = device_type
@@ -23,7 +23,7 @@ class Device:
 import random
 
 class Sensor:
-    def init(self, location, group, sensor_type, sensor_name):
+    def int(self, location, group, sensor_type, sensor_name):
         self.location = location
         self.group = group
         self.sensor_type = sensor_type
@@ -34,7 +34,7 @@ class Sensor:
 
 # ---- Control Panel ----
 class ControlPanel:
-    def init(self):
+    def int(self):
         self.groups = {}
         print(" سیستم کنترل هوشمند خانه راه‌اندازی شد ")
 
